@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Producto"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="producto"
+  AliasName="Producto"
+  BindingStyle="JDBC">
+  <Attribute
+    Name="Idproducto"
+    IsNotNull="true"
+    ColumnName="idproducto"
+    SQLType="INTEGER"
+    Type="java.lang.Integer"
+    ColumnType="INT"
+    TableName="producto"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Nombre"
+    IsNotNull="true"
+    Precision="45"
+    ColumnName="nombre"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="producto">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="45"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Precio"
+    IsNotNull="true"
+    Precision="45"
+    ColumnName="precio"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="producto">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="45"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Descripcion"
+    IsNotNull="true"
+    Precision="255"
+    ColumnName="descripcion"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="producto">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Restricciones"
+    Precision="45"
+    ColumnName="restricciones"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="producto">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="45"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Pedido"
+    Association="model.EO.PedidoIbfk2Assoc1"
+    AssociationEnd="model.EO.PedidoIbfk2Assoc1.Pedido"
+    AssociationOtherEnd="model.EO.PedidoIbfk2Assoc1.Producto"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Pedido1"
+    Association="model.EO.PedidoIbfk1Assoc1"
+    AssociationEnd="model.EO.PedidoIbfk1Assoc1.Pedido1"
+    AssociationOtherEnd="model.EO.PedidoIbfk1Assoc1.Producto1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="Primary1"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRIMARY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.Producto.Idproducto"/>
+    </AttrArray>
+  </Key>
+</Entity>

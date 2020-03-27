@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Usuarios.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:button text="Regresar a página principal" id="b1" action="ir_principal" partialSubmit="false"/>
+            <af:separator id="s1"/>
+            <af:panelGroupLayout id="pgl1" valign="top" layout="scroll">
+                <af:panelBox text="Administración de usuarios" id="pb1" showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelSplitter id="ps1" splitterPosition="400" styleClass="AFStretchWidth"
+                                      inlineStyle="height:450px;">
+                        <f:facet name="first">
+                            <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                                <af:inputText value="#{bindings.Idusuario.inputValue}"
+                                              label="#{bindings.Idusuario.hints.label}"
+                                              required="#{bindings.Idusuario.hints.mandatory}"
+                                              columns="#{bindings.Idusuario.hints.displayWidth}"
+                                              maximumLength="#{bindings.Idusuario.hints.precision}"
+                                              shortDesc="#{bindings.Idusuario.hints.tooltip}" id="it1">
+                                    <f:validator binding="#{bindings.Idusuario.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Idusuario.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings['Contraseña'].inputValue}"
+                                              label="#{bindings['Contraseña'].hints.label}"
+                                              required="#{bindings['Contraseña'].hints.mandatory}"
+                                              columns="#{bindings['Contraseña'].hints.displayWidth}"
+                                              maximumLength="#{bindings['Contraseña'].hints.precision}"
+                                              shortDesc="#{bindings['Contraseña'].hints.tooltip}" id="it2">
+                                    <f:validator binding="#{bindings['Contraseña'].validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Nombre.inputValue}"
+                                              label="#{bindings.Nombre.hints.label}"
+                                              required="#{bindings.Nombre.hints.mandatory}"
+                                              columns="#{bindings.Nombre.hints.displayWidth}"
+                                              maximumLength="#{bindings.Nombre.hints.precision}"
+                                              shortDesc="#{bindings.Nombre.hints.tooltip}" id="it3">
+                                    <f:validator binding="#{bindings.Nombre.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Apaterno.inputValue}"
+                                              label="#{bindings.Apaterno.hints.label}"
+                                              required="#{bindings.Apaterno.hints.mandatory}"
+                                              columns="#{bindings.Apaterno.hints.displayWidth}"
+                                              maximumLength="#{bindings.Apaterno.hints.precision}"
+                                              shortDesc="#{bindings.Apaterno.hints.tooltip}" id="it4">
+                                    <f:validator binding="#{bindings.Apaterno.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Amaterno.inputValue}"
+                                              label="#{bindings.Amaterno.hints.label}"
+                                              required="#{bindings.Amaterno.hints.mandatory}"
+                                              columns="#{bindings.Amaterno.hints.displayWidth}"
+                                              maximumLength="#{bindings.Amaterno.hints.precision}"
+                                              shortDesc="#{bindings.Amaterno.hints.tooltip}" id="it5">
+                                    <f:validator binding="#{bindings.Amaterno.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Tel.inputValue}" label="#{bindings.Tel.hints.label}"
+                                              required="#{bindings.Tel.hints.mandatory}"
+                                              columns="#{bindings.Tel.hints.displayWidth}"
+                                              maximumLength="#{bindings.Tel.hints.precision}"
+                                              shortDesc="#{bindings.Tel.hints.tooltip}" id="it6">
+                                    <f:validator binding="#{bindings.Tel.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                                              required="#{bindings.Email.hints.mandatory}"
+                                              columns="#{bindings.Email.hints.displayWidth}"
+                                              maximumLength="#{bindings.Email.hints.precision}"
+                                              shortDesc="#{bindings.Email.hints.tooltip}" id="it7">
+                                    <f:validator binding="#{bindings.Email.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Calle.inputValue}" label="#{bindings.Calle.hints.label}"
+                                              required="#{bindings.Calle.hints.mandatory}"
+                                              columns="#{bindings.Calle.hints.displayWidth}"
+                                              maximumLength="#{bindings.Calle.hints.precision}"
+                                              shortDesc="#{bindings.Calle.hints.tooltip}" id="it8">
+                                    <f:validator binding="#{bindings.Calle.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Num.inputValue}" label="#{bindings.Num.hints.label}"
+                                              required="#{bindings.Num.hints.mandatory}"
+                                              columns="#{bindings.Num.hints.displayWidth}"
+                                              maximumLength="#{bindings.Num.hints.precision}"
+                                              shortDesc="#{bindings.Num.hints.tooltip}" id="it9">
+                                    <f:validator binding="#{bindings.Num.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Num.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Cp.inputValue}" label="#{bindings.Cp.hints.label}"
+                                              required="#{bindings.Cp.hints.mandatory}"
+                                              columns="#{bindings.Cp.hints.displayWidth}"
+                                              maximumLength="#{bindings.Cp.hints.precision}"
+                                              shortDesc="#{bindings.Cp.hints.tooltip}" id="it10">
+                                    <f:validator binding="#{bindings.Cp.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Cp.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Ciudad.inputValue}"
+                                              label="#{bindings.Ciudad.hints.label}"
+                                              required="#{bindings.Ciudad.hints.mandatory}"
+                                              columns="#{bindings.Ciudad.hints.displayWidth}"
+                                              maximumLength="#{bindings.Ciudad.hints.precision}"
+                                              shortDesc="#{bindings.Ciudad.hints.tooltip}" id="it11">
+                                    <f:validator binding="#{bindings.Ciudad.validator}"/>
+                                </af:inputText>
+                                <f:facet name="footer">
+                                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                        <af:button actionListener="#{bindings.Commit.execute}" text="Guardar" id="b2"
+                                                   partialSubmit="false" disabled="false"/>
+                                        <af:spacer width="10" height="10" id="s2"/>
+                                        <af:button actionListener="#{bindings.Rollback.execute}" text="Cancelar"
+                                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3"
+                                                   partialSubmit="false">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelFormLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelCollection id="pc1">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2">
+                                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="Agregar"
+                                                   disabled="#{!bindings.CreateInsert.enabled}" id="b4"
+                                                   partialSubmit="false"/>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.UsuarioView1.collectionModel}" var="row"
+                                          rows="#{bindings.UsuarioView1.rangeSize}"
+                                          emptyText="#{bindings.UsuarioView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.UsuarioView1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.UsuarioView1.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.UsuarioView1.rangeSize}"
+                                          filterModel="#{bindings.UsuarioView1Query.queryDescriptor}"
+                                          queryListener="#{bindings.UsuarioView1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs" id="t1" partialTriggers="::b4 b5"
+                                          width="727">
+                                    <af:column id="c12" displayIndex="100" rowHeader="true" align="center">
+                                        <af:button actionListener="#{bindings.Delete.execute}" text="Eliminar"
+                                                   disabled="#{!bindings.Delete.enabled}" id="b5"
+                                                   partialSubmit="false"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Idusuario.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Idusuario.label}" id="c1">
+                                        <af:outputText value="#{row.Idusuario}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Idusuario.tooltip}"
+                                                       id="ot1">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.UsuarioView1.hints.Idusuario.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints['Contraseña'].name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints['Contraseña'].label}" id="c2">
+                                        <af:outputText value="#{row['Contraseña']}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints['Contraseña'].tooltip}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Nombre.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Nombre.label}" id="c3">
+                                        <af:outputText value="#{row.Nombre}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Nombre.tooltip}"
+                                                       id="ot3"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Apaterno.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Apaterno.label}" id="c4">
+                                        <af:outputText value="#{row.Apaterno}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Apaterno.tooltip}"
+                                                       id="ot4"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Amaterno.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Amaterno.label}" id="c5">
+                                        <af:outputText value="#{row.Amaterno}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Amaterno.tooltip}"
+                                                       id="ot5"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Tel.name}" filterable="true"
+                                               sortable="true" headerText="#{bindings.UsuarioView1.hints.Tel.label}"
+                                               id="c6">
+                                        <af:outputText value="#{row.Tel}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Tel.tooltip}" id="ot6"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Email.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Email.label}" id="c7">
+                                        <af:outputText value="#{row.Email}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Email.tooltip}"
+                                                       id="ot7"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Calle.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Calle.label}" id="c8">
+                                        <af:outputText value="#{row.Calle}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Calle.tooltip}"
+                                                       id="ot8"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Num.name}" filterable="true"
+                                               sortable="true" headerText="#{bindings.UsuarioView1.hints.Num.label}"
+                                               id="c9">
+                                        <af:outputText value="#{row.Num}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Num.tooltip}" id="ot9">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.UsuarioView1.hints.Num.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Cp.name}" filterable="true"
+                                               sortable="true" headerText="#{bindings.UsuarioView1.hints.Cp.label}"
+                                               id="c10">
+                                        <af:outputText value="#{row.Cp}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Cp.tooltip}" id="ot10">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.UsuarioView1.hints.Cp.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.UsuarioView1.hints.Ciudad.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.UsuarioView1.hints.Ciudad.label}" id="c11">
+                                        <af:outputText value="#{row.Ciudad}"
+                                                       shortDesc="#{bindings.UsuarioView1.hints.Ciudad.tooltip}"
+                                                       id="ot11"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelSplitter>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

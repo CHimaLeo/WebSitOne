@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Principal.jsf" id="d1">
+        <af:form id="f1">
+            <af:separator id="s5"/>
+            <af:spacer width="460" height="10" id="s1"/>
+            <af:button text="USUARIOS" id="b1" action="ir_usuarios" partialSubmit="false"/>
+            <af:spacer width="50" height="10" id="s2"/>
+            <af:button text="PRODUCTOS" id="b2" action="ir_productos" partialSubmit="false"/>
+            <af:spacer width="50" height="10" id="s3"/>
+            <af:button text="PEDIDOS" id="b3" action="ir_pedidos" partialSubmit="false"/>
+            <af:spacer width="460" height="10" id="s4"/>
+            <af:image source="#{resource['images:pizza.jpg']}" id="i1" inlineStyle="width:1240px; height:530px;"/>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Pedidos.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:button text="Regresar a página principal" id="b1" partialSubmit="false" action="ir_principal"/>
+            <af:separator id="s1"/>
+            <af:panelGroupLayout id="pgl1" valign="top" layout="scroll">
+                <af:panelBox text="Administración de productos" id="pb1" showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelSplitter id="ps1" splitterPosition="400" inlineStyle="height:450px;"
+                                      styleClass="AFStretchWidth">
+                        <f:facet name="first">
+                            <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                                <af:inputText value="#{bindings.Idpedido.inputValue}"
+                                              label="#{bindings.Idpedido.hints.label}"
+                                              required="#{bindings.Idpedido.hints.mandatory}"
+                                              columns="#{bindings.Idpedido.hints.displayWidth}"
+                                              maximumLength="#{bindings.Idpedido.hints.precision}"
+                                              shortDesc="#{bindings.Idpedido.hints.tooltip}" id="it1">
+                                    <f:validator binding="#{bindings.Idpedido.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Idpedido.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Fecha.inputValue}" label="#{bindings.Fecha.hints.label}"
+                                              required="#{bindings.Fecha.hints.mandatory}"
+                                              columns="#{bindings.Fecha.hints.displayWidth}"
+                                              maximumLength="#{bindings.Fecha.hints.precision}"
+                                              shortDesc="#{bindings.Fecha.hints.tooltip}" id="it2">
+                                    <f:validator binding="#{bindings.Fecha.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Cantidad.inputValue}"
+                                              label="#{bindings.Cantidad.hints.label}"
+                                              required="#{bindings.Cantidad.hints.mandatory}"
+                                              columns="#{bindings.Cantidad.hints.displayWidth}"
+                                              maximumLength="#{bindings.Cantidad.hints.precision}"
+                                              shortDesc="#{bindings.Cantidad.hints.tooltip}" id="it3">
+                                    <f:validator binding="#{bindings.Cantidad.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Cantidad.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Total.inputValue}" label="#{bindings.Total.hints.label}"
+                                              required="#{bindings.Total.hints.mandatory}"
+                                              columns="#{bindings.Total.hints.displayWidth}"
+                                              maximumLength="#{bindings.Total.hints.precision}"
+                                              shortDesc="#{bindings.Total.hints.tooltip}" id="it4">
+                                    <f:validator binding="#{bindings.Total.validator}"/>
+                                </af:inputText>
+                                <af:selectOneChoice value="#{bindings.Idproducto.inputValue}"
+                                                    label="#{bindings.Idproducto.label}"
+                                                    required="#{bindings.Idproducto.hints.mandatory}"
+                                                    shortDesc="#{bindings.Idproducto.hints.tooltip}" id="soc3">
+                                    <f:selectItems value="#{bindings.Idproducto.items}" id="si3"/>
+                                    <f:validator binding="#{bindings.Idproducto.validator}"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice value="#{bindings.Idusuario.inputValue}"
+                                                    label="#{bindings.Idusuario.label}"
+                                                    required="#{bindings.Idusuario.hints.mandatory}"
+                                                    shortDesc="#{bindings.Idusuario.hints.tooltip}" id="soc4">
+                                    <f:selectItems value="#{bindings.Idusuario.items}" id="si4"/>
+                                    <f:validator binding="#{bindings.Idusuario.validator}"/>
+                                </af:selectOneChoice>
+                                <f:facet name="footer">
+                                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                        <af:button actionListener="#{bindings.Commit.execute}" text="Guardar" id="b2"
+                                                   partialSubmit="false" disabled="false"/>
+                                        <af:spacer width="10" height="10" id="s2"/>
+                                        <af:button actionListener="#{bindings.Rollback.execute}" text="Cancelar"
+                                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3"
+                                                   partialSubmit="false">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelFormLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelCollection id="pc1">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2">
+                                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="Agregar"
+                                                   disabled="#{!bindings.CreateInsert.enabled}" id="b4"
+                                                   partialSubmit="false"/>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.PedidoView1.collectionModel}" var="row"
+                                          rows="#{bindings.PedidoView1.rangeSize}"
+                                          emptyText="#{bindings.PedidoView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.PedidoView1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.PedidoView1.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.PedidoView1.rangeSize}"
+                                          filterModel="#{bindings.PedidoView1Query.queryDescriptor}"
+                                          queryListener="#{bindings.PedidoView1Query.processQuery}" filterVisible="true"
+                                          varStatus="vs" id="t1" partialTriggers="::b4 b5" width="732">
+                                    <af:column id="c7" align="center" displayIndex="100" rowHeader="true">
+                                        <af:button actionListener="#{bindings.Delete.execute}" text="Eliminar"
+                                                   disabled="#{!bindings.Delete.enabled}" id="b5"
+                                                   partialSubmit="false"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PedidoView1.hints.Idpedido.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.PedidoView1.hints.Idpedido.label}" id="c1">
+                                        <af:outputText value="#{row.Idpedido}"
+                                                       shortDesc="#{bindings.PedidoView1.hints.Idpedido.tooltip}"
+                                                       id="ot1">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PedidoView1.hints.Idpedido.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PedidoView1.hints.Fecha.name}" filterable="true"
+                                               sortable="true" headerText="#{bindings.PedidoView1.hints.Fecha.label}"
+                                               id="c2">
+                                        <af:outputText value="#{row.Fecha}"
+                                                       shortDesc="#{bindings.PedidoView1.hints.Fecha.tooltip}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PedidoView1.hints.Cantidad.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.PedidoView1.hints.Cantidad.label}" id="c3">
+                                        <af:outputText value="#{row.Cantidad}"
+                                                       shortDesc="#{bindings.PedidoView1.hints.Cantidad.tooltip}"
+                                                       id="ot3">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PedidoView1.hints.Cantidad.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PedidoView1.hints.Total.name}" filterable="true"
+                                               sortable="true" headerText="#{bindings.PedidoView1.hints.Total.label}"
+                                               id="c4">
+                                        <af:outputText value="#{row.Total}"
+                                                       shortDesc="#{bindings.PedidoView1.hints.Total.tooltip}"
+                                                       id="ot4"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PedidoView1.hints.Idproducto.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.PedidoView1.hints.Idproducto.label}" id="c5">
+                                        <af:selectOneChoice value="#{row.bindings.Idproducto.inputValue}"
+                                                            label="#{row.bindings.Idproducto.label}"
+                                                            required="#{bindings.PedidoView1.hints.Idproducto.mandatory}"
+                                                            shortDesc="#{bindings.PedidoView1.hints.Idproducto.tooltip}"
+                                                            readOnly="true" id="soc1">
+                                            <f:selectItems value="#{row.bindings.Idproducto.items}" id="si1"/>
+                                            <f:validator binding="#{row.bindings.Idproducto.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PedidoView1.hints.Idusuario.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.PedidoView1.hints.Idusuario.label}" id="c6">
+                                        <af:selectOneChoice value="#{row.bindings.Idusuario.inputValue}"
+                                                            label="#{row.bindings.Idusuario.label}"
+                                                            required="#{bindings.PedidoView1.hints.Idusuario.mandatory}"
+                                                            shortDesc="#{bindings.PedidoView1.hints.Idusuario.tooltip}"
+                                                            readOnly="true" id="soc2">
+                                            <f:selectItems value="#{row.bindings.Idusuario.items}" id="si2"/>
+                                            <f:validator binding="#{row.bindings.Idusuario.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelSplitter>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

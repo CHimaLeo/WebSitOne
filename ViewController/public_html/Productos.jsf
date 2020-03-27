@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Productos.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:button text="Regresar a página principal" id="b1" action="ir_principal" partialSubmit="false"/>
+            <af:separator id="s1"/>
+            <af:panelGroupLayout id="pgl1" valign="top" layout="scroll">
+                <af:panelBox text="Administración de productos" id="pb1" showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelSplitter id="ps1" splitterPosition="400" styleClass="AFStretchWidth"
+                                      inlineStyle="height:450px;">
+                        <f:facet name="first">
+                            <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1">
+                                <af:inputText value="#{bindings.Idproducto.inputValue}"
+                                              label="#{bindings.Idproducto.hints.label}"
+                                              required="#{bindings.Idproducto.hints.mandatory}"
+                                              columns="#{bindings.Idproducto.hints.displayWidth}"
+                                              maximumLength="#{bindings.Idproducto.hints.precision}"
+                                              shortDesc="#{bindings.Idproducto.hints.tooltip}" id="it1">
+                                    <f:validator binding="#{bindings.Idproducto.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Idproducto.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Nombre.inputValue}"
+                                              label="#{bindings.Nombre.hints.label}"
+                                              required="#{bindings.Nombre.hints.mandatory}"
+                                              columns="#{bindings.Nombre.hints.displayWidth}"
+                                              maximumLength="#{bindings.Nombre.hints.precision}"
+                                              shortDesc="#{bindings.Nombre.hints.tooltip}" id="it2">
+                                    <f:validator binding="#{bindings.Nombre.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Precio.inputValue}"
+                                              label="#{bindings.Precio.hints.label}"
+                                              required="#{bindings.Precio.hints.mandatory}"
+                                              columns="#{bindings.Precio.hints.displayWidth}"
+                                              maximumLength="#{bindings.Precio.hints.precision}"
+                                              shortDesc="#{bindings.Precio.hints.tooltip}" id="it3">
+                                    <f:validator binding="#{bindings.Precio.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Descripcion.inputValue}"
+                                              label="#{bindings.Descripcion.hints.label}"
+                                              required="#{bindings.Descripcion.hints.mandatory}"
+                                              columns="#{bindings.Descripcion.hints.displayWidth}"
+                                              maximumLength="#{bindings.Descripcion.hints.precision}"
+                                              shortDesc="#{bindings.Descripcion.hints.tooltip}" id="it4">
+                                    <f:validator binding="#{bindings.Descripcion.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Restricciones.inputValue}"
+                                              label="#{bindings.Restricciones.hints.label}"
+                                              required="#{bindings.Restricciones.hints.mandatory}"
+                                              columns="#{bindings.Restricciones.hints.displayWidth}"
+                                              maximumLength="#{bindings.Restricciones.hints.precision}"
+                                              shortDesc="#{bindings.Restricciones.hints.tooltip}" id="it5">
+                                    <f:validator binding="#{bindings.Restricciones.validator}"/>
+                                </af:inputText>
+                                <f:facet name="footer">
+                                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                        <af:button actionListener="#{bindings.Commit.execute}" text="Guardar" id="b2"
+                                                   partialSubmit="false" disabled="false"/>
+                                        <af:spacer width="10" height="10" id="s2"/>
+                                        <af:button actionListener="#{bindings.Rollback.execute}" text="Cancelar"
+                                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3"
+                                                   partialSubmit="false">
+                                            <af:resetActionListener/>
+                                        </af:button>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelFormLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelCollection id="pc1">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2">
+                                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="Agregar"
+                                                   disabled="#{!bindings.CreateInsert.enabled}" id="b4"
+                                                   partialSubmit="false"/>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.ProductoView1.collectionModel}" var="row"
+                                          rows="#{bindings.ProductoView1.rangeSize}"
+                                          emptyText="#{bindings.ProductoView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.ProductoView1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.ProductoView1.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.ProductoView1.rangeSize}"
+                                          filterModel="#{bindings.ProductoView1Query.queryDescriptor}"
+                                          queryListener="#{bindings.ProductoView1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs" id="t1" partialTriggers="::b4 b5"
+                                          width="626">
+                                    <af:column id="c6" align="center" displayIndex="100" rowHeader="true">
+                                        <af:button actionListener="#{bindings.Delete.execute}" text="Eliminar"
+                                                   disabled="#{!bindings.Delete.enabled}" id="b5"
+                                                   partialSubmit="false"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProductoView1.hints.Idproducto.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProductoView1.hints.Idproducto.label}" id="c1">
+                                        <af:outputText value="#{row.Idproducto}"
+                                                       shortDesc="#{bindings.ProductoView1.hints.Idproducto.tooltip}"
+                                                       id="ot1">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProductoView1.hints.Idproducto.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProductoView1.hints.Nombre.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProductoView1.hints.Nombre.label}" id="c2">
+                                        <af:outputText value="#{row.Nombre}"
+                                                       shortDesc="#{bindings.ProductoView1.hints.Nombre.tooltip}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProductoView1.hints.Precio.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProductoView1.hints.Precio.label}" id="c3">
+                                        <af:outputText value="#{row.Precio}"
+                                                       shortDesc="#{bindings.ProductoView1.hints.Precio.tooltip}"
+                                                       id="ot3"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProductoView1.hints.Descripcion.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProductoView1.hints.Descripcion.label}" id="c4">
+                                        <af:outputText value="#{row.Descripcion}"
+                                                       shortDesc="#{bindings.ProductoView1.hints.Descripcion.tooltip}"
+                                                       id="ot4"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProductoView1.hints.Restricciones.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProductoView1.hints.Restricciones.label}" id="c5">
+                                        <af:outputText value="#{row.Restricciones}"
+                                                       shortDesc="#{bindings.ProductoView1.hints.Restricciones.tooltip}"
+                                                       id="ot5"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelSplitter>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

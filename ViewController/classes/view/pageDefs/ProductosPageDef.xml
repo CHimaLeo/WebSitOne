@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="ProductosPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProductoView1" RangeSize="25" DataControl="AppModuleDataControl" id="ProductoView1Iterator"/>
+    <searchRegion Binds="ProductoView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ProductoView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductoView1Iterator" id="ProductoView1">
+      <nodeDefinition DefName="model.EVO.ProductoView" Name="ProductoView10">
+        <AttrNames>
+          <Item Value="Idproducto"/>
+          <Item Value="Nombre"/>
+          <Item Value="Precio"/>
+          <Item Value="Descripcion"/>
+          <Item Value="Restricciones"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ProductoView1Iterator" id="Idproducto">
+      <AttrNames>
+        <Item Value="Idproducto"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductoView1Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductoView1Iterator" id="Precio">
+      <AttrNames>
+        <Item Value="Precio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductoView1Iterator" id="Descripcion">
+      <AttrNames>
+        <Item Value="Descripcion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductoView1Iterator" id="Restricciones">
+      <AttrNames>
+        <Item Value="Restricciones"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="ProductoView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ProductoView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

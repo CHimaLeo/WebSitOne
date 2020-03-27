@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="UsuariosPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="UsuarioView1" RangeSize="25" DataControl="AppModuleDataControl" id="UsuarioView1Iterator"/>
+    <searchRegion Binds="UsuarioView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="UsuarioView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="UsuarioView1Iterator" id="UsuarioView1">
+      <nodeDefinition DefName="model.EVO.UsuarioView" Name="UsuarioView10">
+        <AttrNames>
+          <Item Value="Idusuario"/>
+          <Item Value="Contraseña"/>
+          <Item Value="Nombre"/>
+          <Item Value="Apaterno"/>
+          <Item Value="Amaterno"/>
+          <Item Value="Tel"/>
+          <Item Value="Email"/>
+          <Item Value="Calle"/>
+          <Item Value="Num"/>
+          <Item Value="Cp"/>
+          <Item Value="Ciudad"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Idusuario">
+      <AttrNames>
+        <Item Value="Idusuario"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Contraseña">
+      <AttrNames>
+        <Item Value="Contraseña"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Apaterno">
+      <AttrNames>
+        <Item Value="Apaterno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Amaterno">
+      <AttrNames>
+        <Item Value="Amaterno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Tel">
+      <AttrNames>
+        <Item Value="Tel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Calle">
+      <AttrNames>
+        <Item Value="Calle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Num">
+      <AttrNames>
+        <Item Value="Num"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Cp">
+      <AttrNames>
+        <Item Value="Cp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UsuarioView1Iterator" id="Ciudad">
+      <AttrNames>
+        <Item Value="Ciudad"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="UsuarioView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="UsuarioView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

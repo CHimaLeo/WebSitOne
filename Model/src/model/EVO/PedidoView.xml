@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PedidoView"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="Pedido.idpedido, 
+       Pedido.fecha, 
+       Pedido.cantidad, 
+       Pedido.total, 
+       Pedido.idproducto, 
+       Pedido.idusuario"
+  FromList="pedido Pedido"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="ProductoView1"
+    ViewObjectName="model.EVO.ProductoView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="UsuarioView1"
+    ViewObjectName="model.EVO.UsuarioView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Idproducto"
+    ListVOName="ProductoView1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Idproducto"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Idproducto"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Nombre"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Idusuario"
+    ListVOName="UsuarioView1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Idusuario"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Idusuario"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Nombre"/>
+      <Item Value="Apaterno"/>
+      <Item Value="Amaterno"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="Pedido"
+    Entity="model.EO.Pedido"/>
+  <ViewAttribute
+    Name="Idpedido"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Idpedido"
+    EntityUsage="Pedido"
+    AliasName="idpedido"/>
+  <ViewAttribute
+    Name="Fecha"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Fecha"
+    EntityUsage="Pedido"
+    AliasName="fecha"/>
+  <ViewAttribute
+    Name="Cantidad"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Cantidad"
+    EntityUsage="Pedido"
+    AliasName="cantidad"/>
+  <ViewAttribute
+    Name="Total"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Total"
+    EntityUsage="Pedido"
+    AliasName="total"/>
+  <ViewAttribute
+    Name="Idproducto"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Idproducto"
+    EntityUsage="Pedido"
+    AliasName="idproducto"
+    LOVName="LOV_Idproducto">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Idusuario"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Idusuario"
+    EntityUsage="Pedido"
+    AliasName="idusuario"
+    LOVName="LOV_Idusuario">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="PedidoView"
+    ViewLink="model.EVO.PedidoIbfk2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="PedidoView1"
+    ViewLink="model.EVO.PedidoIbfk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

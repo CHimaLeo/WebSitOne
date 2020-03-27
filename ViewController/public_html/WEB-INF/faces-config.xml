@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+  </application>
+  <navigation-rule>
+    <from-view-id>/Principal.jsf</from-view-id>
+    <navigation-case>
+      <from-outcome>ir_pedidos</from-outcome>
+      <to-view-id>/Pedidos.jsf</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>ir_productos</from-outcome>
+      <to-view-id>/Productos.jsf</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>ir_usuarios</from-outcome>
+      <to-view-id>/Usuarios.jsf</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>*</from-view-id>
+    <navigation-case>
+      <from-outcome>ir_principal</from-outcome>
+      <to-view-id>/Principal.jsf</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+</faces-config>

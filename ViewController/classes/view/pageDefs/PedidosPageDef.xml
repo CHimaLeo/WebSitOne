@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="PedidosPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PedidoView1" RangeSize="25" DataControl="AppModuleDataControl" id="PedidoView1Iterator"/>
+    <searchRegion Binds="PedidoView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="PedidoView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PedidoView1Iterator" id="PedidoView1">
+      <nodeDefinition DefName="model.EVO.PedidoView" Name="PedidoView10">
+        <AttrNames>
+          <Item Value="Idpedido"/>
+          <Item Value="Fecha"/>
+          <Item Value="Cantidad"/>
+          <Item Value="Total"/>
+          <Item Value="Idproducto"/>
+          <Item Value="Idusuario"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PedidoView1Iterator" id="Idpedido">
+      <AttrNames>
+        <Item Value="Idpedido"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PedidoView1Iterator" id="Fecha">
+      <AttrNames>
+        <Item Value="Fecha"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PedidoView1Iterator" id="Cantidad">
+      <AttrNames>
+        <Item Value="Cantidad"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PedidoView1Iterator" id="Total">
+      <AttrNames>
+        <Item Value="Total"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PedidoView1Iterator" StaticList="false" Uses="LOV_Idproducto" id="Idproducto"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PedidoView1Iterator" StaticList="false" Uses="LOV_Idusuario" id="Idusuario"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="PedidoView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PedidoView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>
